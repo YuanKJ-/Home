@@ -258,7 +258,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/line_setting"/>
 
-
     <TextView
         android:id="@+id/tv_feedback"
         android:layout_width="72dp"
@@ -272,7 +271,6 @@
         app:layout_constraintBottom_toBottomOf="@id/line_setting"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/line_setting"/>
-
 
     <!-- 底部设置 end-->
 
