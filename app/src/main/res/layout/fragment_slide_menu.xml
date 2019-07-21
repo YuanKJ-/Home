@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".SlideMenuFragment">
+
+    <!-- 头部个人信息 start-->
+    <ImageView
+        android:id="@+id/iv_slide_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/side_menu_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_avatar_bg"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@id/iv_slide_bg"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_avatar_bg"
+        app:layout_constraintLeft_toLeftOf="@id/iv_avatar_bg"
+        app:layout_constraintRight_toRightOf="@id/iv_avatar_bg"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar_bg" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="测试用户"
+        android:textColor="#333333"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_user_title"
+        app:layout_constraintLeft_toRightOf="@id/iv_avatar_bg"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar_bg" />
+
+    <TextView
+        android:id="@+id/tv_user_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxWidth="162dp"
+        android:text="商家前端研发组组长/高级工程师"
+        android:textColor="#999999"
+        android:textSize="12dp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_user_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
+
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_side_phone"
+        android:drawablePadding="3dp"
+        android:text="13456789532"
+        android:textColor="#999999"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_avatar_bg"
+        app:layout_constraintLeft_toLeftOf="@id/tv_user_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_title" />
+    <!-- 头部个人信息 end-->
+
+    <!-- We奖励数据 start-->
+    <TextView
+        android:id="@+id/tv_we_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:text="We奖励"
+        android:textColor="#333333"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_slide_bg" />
+
+    <TextView
+        android:id="@+id/tv_we_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:text="明细"
+        android:textColor="#333333"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tv_we_title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_we_title" />
+
+    <View
+        android:id="@+id/line_we"
+        android:layout_width="1dp"
+        android:layout_height="8dp"
+        android:layout_marginRight="12dp"
+        android:background="#D8D8D8"
+        app:layout_constraintBottom_toBottomOf="@id/tv_we_title"
+        app:layout_constraintRight_toLeftOf="@id/tv_we_detail"
+        app:layout_constraintTop_toTopOf="@id/tv_we_title" />
+
+    <TextView
+        android:id="@+id/tv_we_cash_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="12dp"
+        android:text="提现"
+        android:textColor="#333333"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tv_we_title"
+        app:layout_constraintRight_toLeftOf="@id/line_we"
+        app:layout_constraintTop_toTopOf="@id/tv_we_title" />
+
+    <View
+        android:id="@+id/we_balance_bg"
+        android:layout_width="0dp"
+        android:layout_height="69dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_we_balance_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_we_title" />
+
+    <TextView
+        style="@style/HomeCardTitleTextViewStyle"
+        android:text="余额"
+        app:layout_constraintLeft_toLeftOf="@id/we_balance_bg"
+        app:layout_constraintTop_toTopOf="@id/we_balance_bg" />
+
+    <TextView
+        android:id="@+id/tv_we_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="12dp"
+        android:text="4,006"
+        android:textColor="@android:color/white"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/we_balance_bg"
+        app:layout_constraintLeft_toLeftOf="@id/we_balance_bg" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="12dp"
+        android:src="@drawable/icon_slide_eye"
+        app:layout_constraintBottom_toBottomOf="@id/tv_we_balance"
+        app:layout_constraintRight_toRightOf="@id/we_balance_bg"
+        app:layout_constraintTop_toTopOf="@id/tv_we_balance" />
+
+    <View
+        android:id="@+id/we_left_card_bg"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_home_card_gray_bg"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/we_right_card_bg"
+        app:layout_constraintTop_toBottomOf="@id/we_balance_bg" />
+
+    <TextView
+        style="@style/HomeCardTitleTextViewStyle"
+        android:text="昨日奖励(元)"
+        app:layout_constraintLeft_toLeftOf="@id/we_left_card_bg"
+        app:layout_constraintTop_toTopOf="@id/we_left_card_bg" />
+
+
+    <View
+        android:id="@+id/we_right_card_bg"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_home_card_gray_bg"
+        app:layout_constraintLeft_toRightOf="@id/we_left_card_bg"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/we_balance_bg" />
+
+    <TextView
+        style="@style/HomeCardTitleTextViewStyle"
+        android:drawableRight="@drawable/icon_home_card_title_tips"
+        android:text="累计奖励(元)"
+        app:layout_constraintLeft_toLeftOf="@id/we_right_card_bg"
+        app:layout_constraintTop_toTopOf="@id/we_right_card_bg" />
+
+    <com.ykj.home.view.SlideMenuItem
+        android:id="@+id/menu_shop"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/we_left_card_bg" />
+
+    <com.ykj.home.view.SlideMenuItem
+        android:id="@+id/menu_borrow"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_shop" />
+
+    <com.ykj.home.RealNameMenuItem
+        android:id="@+id/menu_real_name"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_borrow" />
+
+    <!-- We奖励数据 end-->
+
+    <!-- 底部设置 start-->
+    <View
+        android:id="@+id/line_setting"
+        android:layout_width="1dp"
+        android:layout_height="8dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="41dp"
+        android:background="#D8D8D8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_setting"
+        android:layout_width="72dp"
+        android:layout_height="41dp"
+        android:gravity="center"
+        android:textSize="12dp"
+        android:textColor="#333333"
+        android:text="设置"
+        app:layout_constraintHorizontal_bias="0.59"
+        app:layout_constraintTop_toTopOf="@id/line_setting"
+        app:layout_constraintBottom_toBottomOf="@id/line_setting"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/line_setting"/>
+
+
+    <TextView
+        android:id="@+id/tv_feedback"
+        android:layout_width="72dp"
+        android:layout_height="41dp"
+        android:gravity="center"
+        android:textSize="12dp"
+        android:textColor="#333333"
+        android:text="意见反馈"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintTop_toTopOf="@id/line_setting"
+        app:layout_constraintBottom_toBottomOf="@id/line_setting"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/line_setting"/>
+
+
+    <!-- 底部设置 end-->
+
+</android.support.constraint.ConstraintLayout>

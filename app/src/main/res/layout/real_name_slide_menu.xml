@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    tools:parentTag="android.support.constraint.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/iv_menu_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/ic_side_rz_40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="个人认证"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/iv_menu_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_slide_menu_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/real_name_success"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginRight="4dp"
+        android:background="@drawable/shape_slide_real_name_success_bg"
+        android:drawableLeft="@drawable/ic_slide_real_name"
+        android:drawablePadding="2dp"
+        android:gravity="center"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="已认证"
+        android:textColor="@android:color/white"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/arrow"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/real_name_fail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dp"
+        android:text="未完成认证"
+        android:textColor="#999999"
+        android:textSize="12dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/arrow"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</merge>
