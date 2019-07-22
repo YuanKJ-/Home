@@ -22,6 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="个人认证"
+        android:textColor="@color/M2"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/iv_menu_icon"
         app:layout_constraintTop_toTopOf="parent" />

@@ -3,4 +3,21 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!-- 设计规范色 MN系主题色 L系常用色 -->
+    <color name="M1">#3F5FA4</color>
+    <color name="M2">#333333</color>
+    <color name="N1">#666666</color>
+    <color name="N2">#999999</color>
+    <color name="N3">#E7716A</color>
+    <color name="N4">#51C286</color>
+    <color name="N5">#DDDDDD</color>
+
+    <color name="L1">#E8E9E9</color>
+    <color name="L2">#F8F8F8</color>
+    <color name="L3">#F9B64B</color>
+    <color name="L4">#FCF0EF</color>
+    <color name="L5">#DCF3E7</color>
+    <color name="L6">#F7F0E6</color>
+    <color name="L7">#E0E0E0</color>
 </resources>
