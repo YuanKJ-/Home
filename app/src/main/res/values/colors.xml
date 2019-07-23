@@ -6,18 +6,23 @@
 
     <!-- 设计规范色 MN系主题色 L系常用色 -->
     <color name="M1">#3F5FA4</color>
+    <color name="M1_20">#333F5FA4</color>
     <color name="M2">#333333</color>
     <color name="N1">#666666</color>
     <color name="N2">#999999</color>
     <color name="N3">#E7716A</color>
+    <color name="N3_20">#33E7716A</color>
     <color name="N4">#51C286</color>
+    <color name="N4_20">#3351C286</color>
     <color name="N5">#DDDDDD</color>
 
-    <color name="L1">#E8E9E9</color>
+    <color name="L1">#E9E9E9</color>
     <color name="L2">#F8F8F8</color>
     <color name="L3">#F9B64B</color>
     <color name="L4">#FCF0EF</color>
     <color name="L5">#DCF3E7</color>
     <color name="L6">#F7F0E6</color>
     <color name="L7">#E0E0E0</color>
+    <color name="L8">#94B3C2</color>
+    <color name="L9">#C67D59</color>
 </resources>
