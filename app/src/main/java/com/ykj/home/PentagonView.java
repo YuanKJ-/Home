@@ -21,26 +21,24 @@ import com.ykj.home.utils.DensityUtil;
  */
 public class PentagonView extends View {
 
-    private static final int DATA_COUNT = 7; //多边形维度，这里是六边形
-    private static final float RADIAN = (float) (Math.PI * 2 / DATA_COUNT); //每个维度的弧度
-    private static final float RADIAN_90 = (float) (Math.PI / 2);
-    private static final float RADIUS = DensityUtil.dip2px(80f); //一条星射线的长度,发散的六条线,80dp
+    private static final int DATA_COUNT = 7; //多边形维度，这里是多边形
+    private static final float RADIUS = DensityUtil.dip2px(80f); //一条星射线的长度,发散的多条线,80dp
     private static final float CIRCLE_STROKE_WIDTH = DensityUtil.dip2px(1f); //圆环描边1dp
     private static final float MAX_VALUE = 10; //每个维度的最大值
 
     private int centerX; //中心坐标 X
     private int centerY; //中心坐标 Y
-    private int[] data = {5, 9, 4, 2, 3, 5, 1, 8, 6, 4, 3, 7, 6}; //五个维度的数据值
+    private int[] data = {5, 9, 4, 2, 3, 5, 1, 8, 6, 4, 3, 7, 6}; //多个维度的数据值
     private int sumVal = 85; //总数值
 
-    private Path basicPentagonPath; //记录基础六边形的路径
-    private Paint basicPentagonPaint; //绘制基础六边形的画笔
+    private Path basicPentagonPath; //记录基础多边形的路径
+    private Paint basicPentagonPaint; //绘制基础多边形的画笔
     private Paint basicCircleFillPaint; //绘制基础填充圆的画笔
     private Paint basicCirclePaint; //绘制基础圆环的画笔
     private Paint basicDashCirclePaint; //绘制基础虚线圆环的画笔
 
-    private Path valuePentagonPath; //能力值六边形的路径
-    private Paint valuePentagonPaint; //绘制能力值六边形画笔
+    private Path valuePentagonPath; //能力值多边形的路径
+    private Paint valuePentagonPaint; //绘制能力值多边形画笔
     private Paint valueStrokePaint; //能力值描边画笔
 
     private Paint valueTextPaint;//绘制文字的画笔
@@ -59,7 +57,7 @@ public class PentagonView extends View {
     }
 
     private void init() {
-        //初始化白色六边形画笔
+        //初始化白色多边形画笔
         basicPentagonPaint = new Paint();
         basicPentagonPaint.setAntiAlias(true);
         basicPentagonPaint.setColor(Color.WHITE);
@@ -79,7 +77,7 @@ public class PentagonView extends View {
         basicDashCirclePaint = new Paint(basicCirclePaint);
         basicDashCirclePaint.setPathEffect(new DashPathEffect(new float[]{25, 15}, 0));
 
-        //初始化能力值六边形画笔
+        //初始化能力值多边形画笔
         valuePentagonPaint = new Paint();
         valuePentagonPaint.setAntiAlias(true);
         valuePentagonPaint.setColor(getResources().getColor(R.color.M1_20));
@@ -97,9 +95,9 @@ public class PentagonView extends View {
         valueTextPaint.setTextSize(DensityUtil.dip2px(24f));
         valueTextPaint.setColor(getResources().getColor(R.color.M1));
 
-        //初始化白色五边形路径
+        //初始化白色多边形路径
         basicPentagonPath = new Path();
-        //初始化红色五边形路径
+        //初始化红色多边形路径
         valuePentagonPath = new Path();
     }
 
@@ -118,9 +116,9 @@ public class PentagonView extends View {
         centerY = getHeight() / 2;
         canvas.save(); //这时候保存的是画布没旋转之前的状态
         canvas.rotate(-90, centerX, centerY); //画布开始旋转
-        drawBasicPentagon(canvas);//绘制白色六边形和圆环
-        drawRay(canvas);//绘制六条星射线
-        drawValuePentagon(canvas); //绘制数值六边形
+        drawBasicPentagon(canvas);//绘制白色多边形和圆环
+        drawRay(canvas);//绘制多条星射线
+        drawValuePentagon(canvas); //绘制数值多边形
         canvas.restore();   //还原状态(还原上一个save的状态)
         drawValueText(canvas);
     }
@@ -133,7 +131,7 @@ public class PentagonView extends View {
     private void drawBasicPentagon(Canvas canvas) {
         //绘制填充圆
         canvas.drawCircle(centerX, centerY, RADIUS, basicCircleFillPaint);
-        //绘制底图六边形
+        //绘制底图多边形
         basicPentagonPath.reset();
         float tmpRadius = RADIUS - DensityUtil.dip2px(20f);
         for (int i = 0; i < DATA_COUNT; i++) {//绘制一层
@@ -169,7 +167,7 @@ public class PentagonView extends View {
     }
 
     /**
-     * 绘制数值六边形
+     * 绘制数值多边形
      *
      * @param canvas canvas
      */
@@ -216,7 +214,7 @@ public class PentagonView extends View {
      * @param position    顶点的位置
      * @param radius      半径
      * @param radarMargin 边距
-     * @param percent     星射线长度的百分比,用于计算六边形的顶点
+     * @param percent     星射线长度的百分比,用于计算多边形的顶点
      * @return point
      */
     public Point getPoint(int position, float radius, float radarMargin, float percent) {
