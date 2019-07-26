@@ -14,17 +14,23 @@ import android.view.View;
 import com.ykj.home.utils.DensityUtil;
 
 
+/**
+ * Created by kejie.yuan
+ * Date: 2019/7/22
+ * Description: Mos基础分雷达图
+ */
 public class PentagonView extends View {
 
-    private static final int DATA_COUNT = 6; //多边形维度，这里是六边形
+    private static final int DATA_COUNT = 7; //多边形维度，这里是六边形
     private static final float RADIAN = (float) (Math.PI * 2 / DATA_COUNT); //每个维度的弧度
+    private static final float RADIAN_90 = (float) (Math.PI / 2);
     private static final float RADIUS = DensityUtil.dip2px(80f); //一条星射线的长度,发散的六条线,80dp
     private static final float CIRCLE_STROKE_WIDTH = DensityUtil.dip2px(1f); //圆环描边1dp
     private static final float MAX_VALUE = 10; //每个维度的最大值
 
     private int centerX; //中心坐标 X
     private int centerY; //中心坐标 Y
-    private int[] data = {5, 9, 4, 2, 3, 5}; //五个维度的数据值
+    private int[] data = {5, 9, 4, 2, 3, 5, 1, 8, 6, 4, 3, 7, 6}; //五个维度的数据值
     private int sumVal = 85; //总数值
 
     private Path basicPentagonPath; //记录基础六边形的路径
@@ -110,9 +116,12 @@ public class PentagonView extends View {
         super.onDraw(canvas);
         centerX = getWidth() / 2;
         centerY = getHeight() / 2;
+        canvas.save(); //这时候保存的是画布没旋转之前的状态
+        canvas.rotate(-90, centerX, centerY); //画布开始旋转
         drawBasicPentagon(canvas);//绘制白色六边形和圆环
         drawRay(canvas);//绘制六条星射线
         drawValuePentagon(canvas); //绘制数值六边形
+        canvas.restore();   //还原状态(还原上一个save的状态)
         drawValueText(canvas);
     }
 
@@ -167,6 +176,10 @@ public class PentagonView extends View {
     private void drawValuePentagon(Canvas canvas) {
         valuePentagonPath.reset();
         for (int i = 0; i < DATA_COUNT; i++) {
+            if (data.length <= i) {
+                //没那么多数据
+                break;
+            }
             float percent = data[i] / MAX_VALUE;//数据值与最大值的百分比
             Point point = getPoint(i, RADIUS, 0, percent);
             if (i == 0) {
@@ -198,42 +211,30 @@ public class PentagonView extends View {
     }
 
     /**
-     * 正上方的顶点为第一个点，顺时针计算，position 依次是 0, 1, 2, 3, 4, 5
+     * 正右方的顶点为第一个点，顺时针计算，position 依次是 0, 1, 2, 3, 4, 5
      *
      * @param position    顶点的位置
      * @param radius      半径
      * @param radarMargin 边距
      * @param percent     星射线长度的百分比,用于计算六边形的顶点
-     * @return
+     * @return point
      */
     public Point getPoint(int position, float radius, float radarMargin, float percent) {
         int x = 0;
         int y = 0;
-        switch (position) {
-            case 0://第一象限,正上方坐标
-                x = centerX;
-                y = (int) (centerY - (radius + radarMargin) * percent);
-                break;
-            case 1://第二象限,右上角顶点的坐标
-                x = (int) (centerX + (radius + radarMargin) * Math.cos(RADIAN / 2) * percent);
-                y = (int) (centerY - (radius + radarMargin) * Math.sin(RADIAN / 2) * percent);
-                break;
-            case 2://第三象限,右下角顶点的坐标
-                x = (int) (centerX + (radius + radarMargin) * Math.cos(RADIAN / 2) * percent);
-                y = (int) (centerY + (radius + radarMargin) * Math.sin(RADIAN / 2) * percent);
-                break;
-            case 3://第四象限,正下方的坐标
-                x = centerX;
-                y = (int) (centerY + (radius + radarMargin) * percent);
-                break;
-            case 4:// 第五象限,左下角顶点的坐标
-                x = (int) (centerX - (radius + radarMargin) * Math.cos(RADIAN / 2) * percent);
-                y = (int) (centerY + (radius + radarMargin) * Math.sin(RADIAN / 2) * percent);
-                break;
-            case 5://第六象限,左上角顶点的坐标
-                x = (int) (centerX - (radius + radarMargin) * Math.cos(RADIAN / 2) * percent);
-                y = (int) (centerY - (radius + radarMargin) * Math.sin(RADIAN / 2) * percent);
-                break;
+        float angle = (float) (2 * Math.PI / DATA_COUNT);
+
+        if (position == 0) {
+            //第一条边从0度开始,即正右边
+            //如果需要从上边开始请自行旋转canvas进行绘制
+            x = (int) (centerX + (radius + radarMargin) * percent);
+            y = (int) (centerY + radarMargin * percent);
+        } else {
+            //对于直角三角形sin(x)是对边比斜边，cos(x)是底边比斜边，tan(x)是对边比底边
+            //因此可以推导出:底边(x坐标)=斜边(半径)*cos(夹角角度)
+            //               对边(y坐标)=斜边(半径)*sin(夹角角度)
+            x = (int) (centerX + (radius + radarMargin) * Math.cos(angle * position) * percent);
+            y = (int) (centerY + (radius + radarMargin) * Math.sin(angle * position) * percent);
         }
         return new Point(x, y);
     }
