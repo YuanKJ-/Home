@@ -6,24 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/pentagon_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.ykj.home.PentagonView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="7"
+            android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/add"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@android:drawable/btn_default_small"
+            android:gravity="center"
+            android:text="+"
+            app:layout_constraintLeft_toRightOf="@id/count"
+            app:layout_constraintTop_toTopOf="@id/count" />
+
+        <Button
+            android:id="@+id/sub"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@android:drawable/btn_default_small"
+            android:gravity="center"
+            android:text="-"
+            app:layout_constraintLeft_toRightOf="@id/add"
+            app:layout_constraintTop_toTopOf="@id/count" />
+
+        <com.ykj.home.PentagonView
+            android:id="@+id/pentagon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_height="160dp"
+            tools:layout_width="160dp" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <fragment
         android:id="@+id/slide_menu_fragment"
+        android:name="com.ykj.home.SlideMenuFragment"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:name="com.ykj.home.SlideMenuFragment"/>
+        android:layout_gravity="start" />
 
 </android.support.v4.widget.DrawerLayout>

@@ -21,7 +21,7 @@ import com.ykj.home.utils.DensityUtil;
  */
 public class PentagonView extends View {
 
-    private static final int DATA_COUNT = 7; //多边形维度，这里是多边形
+    private int DATA_COUNT = 7; //多边形维度，这里是多边形
     private static final float RADIUS = DensityUtil.dip2px(80f); //一条星射线的长度,发散的多条线,80dp
     private static final float CIRCLE_STROKE_WIDTH = DensityUtil.dip2px(1f); //圆环描边1dp
     private static final float MAX_VALUE = 10; //每个维度的最大值
@@ -235,6 +235,11 @@ public class PentagonView extends View {
             y = (int) (centerY + (radius + radarMargin) * Math.sin(angle * position) * percent);
         }
         return new Point(x, y);
+    }
+
+    public void setCount(int count) {
+        DATA_COUNT = count;
+        invalidate();
     }
 
     //计算wrap_content下准确宽高
